@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+    <meta charset="utf-8">
+    <title>平文胜的网站 - META</title>
+    <meta name="description" content="">
+    <meta name="author" content="平文胜">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://localhost:8000/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://localhost:8000/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/local.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://localhost:8000">平文胜的网站</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://localhost:8000/cn/using-meta-tags-in-web-pages.html"><h1>网页中META标签的使用</h1></a>
+2000-01-04
+
+by <a class="url fn" href="http://localhost:8000/author/ping-wen-sheng.html">平文胜</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><blockquote>
+<p style="background-color: #ccffcc;">本文写于2000年1月，此处保留原文，仅供参考。</p>
+</blockquote>
+<p>Meta标签放在每个网页的 <code>&lt;head&gt;...&lt;/head&gt;</code> 中，我们大家比较熟悉的如：</p>
+<div class="highlight"><pre><span></span>&lt;meta name=&quot;GENERATOR&quot; content=&quot;Microsoft FrontPage 3.0 &gt;说明编辑工具；
+&lt;meta name=&quot;KEYWORDS&quot; content= ... &gt;说明关键词；
+&lt;meta name=&quot;DESCRIPTION&quot; content= ... &gt;说明主页描述；
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=gb_2312-80 &gt;和
+&lt;meta http-equiv=&quot;Content-Language&quot; content=&quot;zh-CN&quot;&gt;说明所用语言及文字...
+</pre></div>
+
+
+<p>可见META有两种，name和http-equiv。</p>
+<p>name主要用于描述网页, 对应于content, 以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找META值来给你的网页分类）。这其中最重要的是DESCRIPTION（你的站点在引擎上的描述）和KEYWORDS（搜索引擎籍以分类的关键词），应该给你的“每一页” 都插入这两个META值。</p>
+<p>当然你也可以不要搜索引擎检索, 可用：</p>
+<p><code>&lt;meta name="ROBOTS" content="all | none | index | noindex | follow | nofollow"&gt;</code>来确定：</p>
+<p>设定为"all"时文件将被检索，且页上链接可被查询；
+设定为"none"则表示文件不被检索，而且不查询页上的链接；
+设定为"index"时文件将被检索；
+设定为"follow"则可查询页上的链接；
+设定为"noindex"时文件不检索，但可被查询链接；
+设定为"nofollow"则表示文件不被检索，但可查询页上的链接。
+http-equiv，顾名思义相当于http文件头的作用，可以直接影响网页的传输。比较直接的例子如：</p>
+<ol>
+<li>
+<p><strong>自动刷新，并指向新网页</strong></p>
+<p><code>&lt;meta http-equiv="Refresh" content="10; url= http://yourlink"&gt; 10秒后刷新到http://yourlink;&gt;</code></p>
+</li>
+<li>
+<p><strong>网页间转换时加入效果</strong></p>
+<p><code>&lt;meta http-equiv="Page-Enter" content="revealTrans(duration=10, transition=50) &gt; 
+&lt;meta http-equiv="Page-Exit" content="revealTrans(duration=20, transition=6) &gt;</code></p>
+<p>加在一个网页中，进出时有一些特殊效果，这个功能即FrontPage 98的Format/Page Transition。不过注意所加网页不能是一个Frame页;</p>
+</li>
+<li>
+<p><strong>强制网页不被存入Cache中</strong></p>
+<p><code>&lt;meta http-equiv="pragma" content="no-cache"&gt; 
+&lt;meta http-equiv="expires" content="wed, 26 Feb 1997 08:21:57 GMT"&gt;</code></p>
+<p>大家可以到<a href="http://www.internet.com" target="_blank">http://www.internet.com</a>上看看，它的首页当你断线后，就无法在cache中再调出。（本身是关于建站很棒的站点)</p>
+</li>
+<li>
+<p><strong>定义指向窗口</strong></p>
+<p><code>&lt;meta http-equiv="window-target" content= _top{: target='_blank'}"&gt;</code></p>
+<p>可以防止网页被别人作为一个Frame调用.(不过,我试了一下,似乎不灵)</p>
+</li>
+</ol>
+<p>Meta还有很多功能, 如大家关心的"怎样在搜索引擎中，被放在搜索结果前面的位置" 。 你可以在以下站点进一步查询：</p>
+<ul>
+<li>http://webdeveloper.com/categories/html/ html_metatag_res.html</li>
+<li><a href="http://vancouver-webpages.com/META/" target="_blank">http://vancouver-webpages.com/META/</a></li>
+<li>http://www.nlc-bnc.ca/ifla/II/metadata.htm</li>
+</ul></div>
+        <hr />
+    </div>
+		
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://localhost:8000/tag/meta.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://localhost:8000/archives.html">Archives</a>
+                <li><a href="http://localhost:8000/tags.html">Tags</a>
+
+
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://localhost:8000/category/bian-cheng.html">编程</a></li>
+                <li><a href="http://localhost:8000/category/jian-kang.html">健康</a></li>
+                <li><a href="http://localhost:8000/category/jiao-yu.html">教育</a></li>
+                <li><a href="http://localhost:8000/category/ying-xiao.html">营销</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
+<img rel="license" alt="Creative Commons License" src="http://www.vincentping.com/images/cc_88_31.png" /></p>
+<p>&copy; 2018 平文胜的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
+<p> &nbsp;</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://localhost:8000/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+    <meta charset="utf-8">
+    <title>平文胜的网站 - 编程</title>
+    <meta name="description" content="">
+    <meta name="author" content="平文胜">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://localhost:8000/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://localhost:8000/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/local.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://localhost:8000">平文胜的网站</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://localhost:8000/cn/remove-category-article-id-from-url-in-joomla-3-cn.html"><h1>如何去除Joomla 3网站静态化URL地址中的分类ID和文章ID</h1></a>
+2015-10-01
+
+by <a class="url fn" href="http://localhost:8000/author/ping-wen-sheng.html">平文胜</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><blockquote>
+<p style="background-color: #ccffcc;">目前本站使用工具直接生成静态页面，不再使用Joomla!，此处保留原文，仅供参考。</p>
+</blockquote>
+<h1>一、问题</h1>
+<p>我的站点vincentping.com是使用Joomla 3.4.4版本管理的，Joomla是一个非常专业的网站内容管理系统（CMS），但是其在SEO搜索引擎优化后的URL模式上有一些不足。</p>
+<p>我首先创建了一些分类和文章，然后在系统管理后台的"Global Configuration"设置"SEO Settings"。其中的选项</p>
+<ul>
+<li>Search Engine Friendly URLs 设为 Yes</li>
+<li>use URL Rewriting 设为 Yes</li>
+<li>Adds Suffix to URL 也设为 Yes</li>
+</ul>
+<p>如下图：</p>
+<p><img alt="seo setting" src="http://localhost:8000/images/seo-setting.png" style="border: 1px solid #000000;"></p>
+<p>这个时候访问站点，文章的URL地址变成如下这样的形式：</p>
+<p><strong>http://www.vincentping.com/cn/8-blogcn/14-remove-category-article-id-from-url-in-joomla-3-cn.html</strong></p>
+<p>相对于原来没有SEO优化前的地址：</p>
+<p><strong>http://www.vincentping.com/index.php?option=com_content&amp;view=article&amp;id=14:remove-category-article-id-from-url-in-joomla-3-cn&amp;catid=8&amp;lang=cn</strong></p>
+<p>上面的优化地址要好得多了，但是还有一些小小的不爽，比如在分类前的8-和文章名之前的14-。很显然这些数值都是数据库中的ID值，这样程序在查找后台数据库时，有了这些值会更加高效，但是对于普通访问者来说，这些数值就显得有些奇怪，而且会让站点显得不够专业，不够”高大上“！</p>
+<p>怎么办呢？经过在google上查询，网上有大量的相关讨论。经过不断地摸索和尝试，下面是我最终使用的解决办法。</p>
+<h1>二、解决方法</h1>
+<ol>
+<li>
+<p>在Joomla系统的目录下，找到下面php文章：“components/com_content/router.php“；</p>
+</li>
+<li>
+<p>查找到下面代码：</p>
+<p><code>$advanced = $params-&gt;get('sef_advanced_link', 0);</code></p>
+</li>
+<li>
+<p>把其中 "0" 改为 "1"，修改结果如下：</p>
+<p><code>$advanced = $params-&gt;get('sef_advanced_link', 1);</code></p>
+<p>在这个router.php文件中共有两处需要修改的地方。</p>
+</li>
+<li>
+<p>继续在该router.php文件中，找到下面的代码段，然后注释掉：</p>
+<div class="highlight"><pre><span></span>if (strpos($segments[0], &#39;:&#39;) === false)
+{
+     $vars[&#39;view&#39;] = &#39;article&#39;;
+     $vars[&#39;id&#39;] = (int) $segments[0];
+
+     return $vars;
+ }
+</pre></div>
+
+
+<p>注释成：</p>
+<div class="highlight"><pre><span></span><span class="cm">/* if (strpos($segments[0], &#39;:&#39;) === false)</span>
+<span class="cm"> {</span>
+<span class="cm">     $vars[&#39;view&#39;] = &#39;article&#39;;</span>
+<span class="cm">     $vars[&#39;id&#39;] = (int) $segments[0];</span>
+
+<span class="cm">     return $vars;</span>
+<span class="cm"> } */</span><span class="w"></span>
+</pre></div>
+
+
+</li>
+</ol>
+<p>然后整个修改就完成了！</p>
+<p>这个时候，该页面的URL地址变成：</p>
+<p><strong>http://www.vincentping.com/cn/remove-category-article-id-from-url-in-joomla-3-cn.html</strong></p>
+<p>提示：一旦以后Joomla版本升级，上述的修改可能被覆盖，就需要重新做。</p>
+<h1>三、一些其他可以尝试的方法</h1>
+<p>我在网络上搜索解决方法时，发现这个URL中数值问题对于Joomla社区已经是一个很”古老“的问题了，但是在核心代码中一直没有得到解决。所以市面上已经出现了许多的解决办法。下面这些方法都可以试试：</p>
+<ul>
+<li>使用第三方的SEF扩展，比如Sh404SEF，JoomSEF和SEF Advance等。可以到<a href="http://extensions.joomla.org/" target="_blank">JED(Joomla! Extensions Directory)</a> 搜索”SEF“，就可以找到很多类似扩展。扩展的问题是很多需要付费，会增加服务器负担，而且升级和维护起来也是个问题。</li>
+<li>如果你对正则表达式比较熟悉，可以在.htaccess文件中增加解析和重定向规则来解决这些问题。当然使用太多.htaccess规则是会影响服务器效率的。</li>
+<li>最后，如果你的站点不大，文章也不多，那么可以像上面介绍的建立菜单项的方法，为每篇文章都建立一个菜单项，这个文章数值问题也能完全解决。</li>
+</ul>
+<p>如果想继续仔细研究下这个URL中的文章ID数值问题，推荐大家可以看看这个在Joomla官方论坛上的帖子："<a href="http://forum.joomla.org/viewtopic.php?f=712&amp;t=826165" target="_blank">Remove article id from url for joomla 3.0</a>"。</p></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://localhost:8000/en/remove-category-article-id-from-url-in-joomla-3.html"><h2>Remove Category and Article ID from URL in Joomla 3</h2></a>
+        <div class= "well small"> 2015-10-01
+
+by <a class="url fn" href="http://localhost:8000/author/vincent-ping.html">Vincent Ping</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Joomla is a very professional content management system (CMS), but there're some minor shortcoming within the SEO URL Mapping.</p> <a class="btn btn-info xsmall" href="http://localhost:8000/en/remove-category-article-id-from-url-in-joomla-3.html">read more</a></div>
+    </div>	
+				
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://localhost:8000/category/bian-cheng.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://localhost:8000/archives.html">Archives</a>
+                <li><a href="http://localhost:8000/tags.html">Tags</a>
+
+
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://localhost:8000/category/bian-cheng.html">编程</a></li>
+                <li><a href="http://localhost:8000/category/jian-kang.html">健康</a></li>
+                <li><a href="http://localhost:8000/category/jiao-yu.html">教育</a></li>
+                <li><a href="http://localhost:8000/category/ying-xiao.html">营销</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
+<img rel="license" alt="Creative Commons License" src="http://www.vincentping.com/images/cc_88_31.png" /></p>
+<p>&copy; 2018 平文胜的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
+<p> &nbsp;</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://localhost:8000/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+    <meta charset="utf-8">
+    <title>平文胜的网站 - RSS及其发展历程简介</title>
+    <meta name="description" content="">
+    <meta name="author" content="平文胜">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://localhost:8000/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://localhost:8000/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/local.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://localhost:8000">平文胜的网站</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>RSS及其发展历程简介</h1>
+2003-10-10
+
+by <a class="url fn" href="http://localhost:8000/author/ping-wen-sheng.html">平文胜</a>
+ 
+
+
+        </div>
+	
+        <div><blockquote>
+<p style="background-color: #ccffcc;">本文写于2003年10月，此处保留原文，仅供参考。</p>
+</blockquote>
+<p>RSS是一种描述和同步网站内容的格式，是目前使用最广泛的XML应用。RSS应用在国外已经非常普遍，从个人博客（Blog）栏目、企业站点到世界级的门户都提供基于RSS的服务，如IBM公司站点的中文新闻RSS <a href="http://www.ibm.com/news/cn/zh/index.rss" target="_blank">http://www.ibm.com/news/cn/zh/index.rss</a>，YAHOO站点的<a href="http://news.yahoo.com/rss" target="_blank">http://news.yahoo.com/rss</a>，微软MSDN站点的http://msdn.microsoft.com/aboutmsdn/rss.asp 等等。</p>
+<h1>1、 RSS的历史</h1>
+<p>那么RSS究竟代表什么呢？比较普遍的有两种说法，一种是“Rich Site Summary”或“RDF Site Summary”，另一种是“Really Simple Syndication”，之所以有这些分歧，需要从RSS发展的历史说起。</p>
+<p>最初的0.90版本RSS是由Netscape公司设计的，目的是用来建立一个整合了各主要新闻站点内容的门户，但是0.90版本的RSS规范过于复杂，而一个简化的RSS 0.91版本也随着Netscape公司对该项目的放弃而于2000年暂停。</p>
+<p>不久，一家专门从事博客写作软件开发的公司UserLand接手了RSS 0.91版本的发展，并把它作为其博客写作软件的基础功能之一继续开发，逐步推出了0.92、0.93和0.94版本。随着网络博客的流行，RSS作为一种基本的功能也被越来越多的网站和博客软件支持。</p>
+<p>在UserLand公司接手并不断开发RSS的同时，很多的专业人士认识到需要通过一个第三方、非商业的组织，把RSS发展成为一个通用的规范，并进一步标准化。于是2001年一个联合小组在0.90版本RSS的开发原则下，以W3C新一代的语义网技术RDF（Resource Description Framework）为基础，对RSS进行了重新定义，发布RSS1.0，并将RSS定义为“RDF Site Summary”。但是这项工作没有与UserLand公司进行有效的沟通，UserLand公司也不承认RSS 1.0的有效性，并坚持按照自己的设想进一步开发出RSS的后续版本，到2002年9月发布了最新版本RSS 2.0，UserLand公司将RSS定义为“Really Simple Syndication”。</p>
+<p>目前RSS已经分化为RSS 0.9x/2.0和RSS 1.0两个阵营，由于分歧的存在和RSS 0.9x/2.0的广泛应用现状，RSS 1.0还没有成为标准化组织的真正标准。</p>
+<h1>2、 RSS目前的版本和推荐</h1>
+<p>到目前为止，RSS共有七种版本，推荐使用的是RSS 1.0和RSS 2.0，对于一些基本的站点同步，也可以选用RSS 0.91。</p>
+<h1>3、 RSS的语法介绍</h1>
+<p>一个RSS文件就是一段规范的XML数据，该文件一般以rss，xml或者rdf作为后缀。下面我们选择http://msdn.microsoft.com/visualc/rss.xml中的一部分作为例子简单解说（略）</p>
+<h1>4、 RSS的联合（Syndication）和聚合（Aggregation）</h1>
+<p>发布一个RSS文件（一般称为RSS Feed）后，这个RSS Feed中包含的信息就能直接被其他站点调用，而且由于这些数据都是标准的XML格式，所以也能在其他的终端和服务中使用，如PDA、手机、邮件列表等。而且一个网站联盟（比如专门讨论旅游的网站系列）也能通过互相调用彼此的RSS Feed，自动的显示网站联盟中其他站点上的最新信息，这就叫着RSS的联合。这种联合就导致一个站点的内容更新越及时、RSS Feed被调用的越多，该站点的知名度就会越高，从而形成一种良性循环。</p>
+<p>而所谓RSS聚合，就是通过软件工具的方法从网络上搜集各种RSS Feed并在一个界面中提供给读者进行阅读。这些软件可以是在线的WEB工具，如http://my.netscape.com，http://my.userland.com， http://www.xmltree.com，http://www.moreover.com，http://www.oreillynet.com/meerkat 等，也可以是下载到客户端安装的工具。</p>
+<h1>5、 RSS的未来发展</h1>
+<p>随着越来越多的站点对RSS的支持，RSS已经成为目前最成功的XML应用。RSS搭建了信息迅速传播的一个技术平台，使得每个人都成为潜在的信息提供者。相信很快我们就会看到大量基于RSS的专业门户、聚合站点和更精确的搜索引擎。</p>
+<p><strong>参考文献：</strong></p>
+<ol>
+<li>RSS 0.9 Specification http://www.purplepages.ie/RSS/netscape/rss0.90.html</li>
+<li>RSS 1.0 Specification <a href="http://web.resource.org/rss/1.0/spec" target="_blank">http://web.resource.org/rss/1.0/spec</a></li>
+<li>RSS 2.0 Specification <a href="http://www.rssboard.org/rss-specification" target="_blank">http://www.rssboard.org/rss-specification</a></li>
+</ol></div>
+	
+        <hr>
+
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://localhost:8000/archives.html">Archives</a>
+                <li><a href="http://localhost:8000/tags.html">Tags</a>
+
+
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://localhost:8000/category/bian-cheng.html">编程</a></li>
+                <li><a href="http://localhost:8000/category/jian-kang.html">健康</a></li>
+                <li><a href="http://localhost:8000/category/jiao-yu.html">教育</a></li>
+                <li><a href="http://localhost:8000/category/ying-xiao.html">营销</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
+<img rel="license" alt="Creative Commons License" src="http://www.vincentping.com/images/cc_88_31.png" /></p>
+<p>&copy; 2018 平文胜的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
+<p> &nbsp;</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://localhost:8000/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

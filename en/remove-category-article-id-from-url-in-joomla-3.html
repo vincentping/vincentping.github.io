@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+    <meta charset="utf-8">
+    <title>平文胜的网站 - Remove Category and Article ID from URL in Joomla 3</title>
+    <meta name="description" content="">
+    <meta name="author" content="平文胜">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://localhost:8000/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://localhost:8000/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/local.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://localhost:8000">平文胜的网站</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>Remove Category and Article ID from URL in Joomla 3</h1>
+2015-10-01
+
+by <a class="url fn" href="http://localhost:8000/author/vincent-ping.html">Vincent Ping</a>
+ 
+
+
+        </div>
+	
+        <div><blockquote>
+<p style="background-color: #ccffcc;">This site has moved to a web site static generator to manage the content, and here is just a backup for reference.</p>
+</blockquote>
+<h1>Problem</h1>
+<p>I installed Joomla 3.4.4 on my vincentping.com site. </p>
+<p>After created some categories and articles, I just wanna try the "SEO Settings" in the "Global Configuration".</p>
+<p>I set the options to: Search Engine Friendly URLs - Yes, use URL Rewriting - Yes, Adds Suffix to URL - Yes, just as following:</p>
+<p><img alt="seo setting" src="http://localhost:8000/images/seo-setting.png" style="border: 1px solid #000000;"></p>
+<p>When I viewed the site, the article URL is like this:</p>
+<p><strong>http://www.vincentping.com/9-blog/2-remove-category-article-id-from-url-in-joomla-3.html</strong></p>
+<p>It's ok comparing with the original URL like this:</p>
+<p><strong>http://www.vincentping.com/index.php?option=com_content&amp;view=article&amp;id=2:remove-category-article-id-from-url-in-joomla-3&amp;catid=9</strong></p>
+<p>But the id numbers before the categoriy(here it's 9) and article(2) are not very nice. Obviously these numbers are some database item number, with them the scripts could fetch data from backend database more efficiently. But to visitors they're a little strange. So I googled the web and tried lots of suggestions from web, finally here is the solution I used.</p>
+<h1>The Solution</h1>
+<ol>
+<li>
+<p>Open the php file under the Joomla root “components/com_content/router.php“,</p>
+</li>
+<li>
+<p>Search for the code:</p>
+<p><code>$advanced = $params-&gt;get('sef_advanced_link', 0);</code></p>
+</li>
+<li>
+<p>Just change the "0" to "1", the output is as this:</p>
+<p><code>$advanced = $params-&gt;get('sef_advanced_link', 1);</code></p>
+<p>There're two lines of code in the file should be changed.</p>
+</li>
+<li>
+<p>Find below section of code in the router.php file and comment it out:</p>
+<div class="highlight"><pre><span></span>if (strpos($segments[0], &#39;:&#39;) === false)
+{
+     $vars[&#39;view&#39;] = &#39;article&#39;;
+     $vars[&#39;id&#39;] = (int) $segments[0];
+
+     return $vars;
+ }
+</pre></div>
+
+
+<p>comment to</p>
+<div class="highlight"><pre><span></span><span class="cm">/* if (strpos($segments[0], &#39;:&#39;) === false)</span>
+<span class="cm"> {</span>
+<span class="cm">     $vars[&#39;view&#39;] = &#39;article&#39;;</span>
+<span class="cm">     $vars[&#39;id&#39;] = (int) $segments[0];</span>
+
+<span class="cm">     return $vars;</span>
+<span class="cm"> } */</span><span class="w"></span>
+</pre></div>
+
+
+</li>
+</ol>
+<p>And all the job is DONE!</p>
+<p>After that, the url for the page is now:</p>
+<p><strong>http://www.vincentping.com/en/remove-category-article-id-from-url-in-joomla-3.html</strong></p>
+<p>Remember: every time you upgrade your Joomla system, you should modify the code again.</p>
+<h1>Other Suggestions You can Try</h1>
+<p>From the research online, I know that the id number issues are a problem for Joomla User Groups for near 10 years. And there's lots of extensions and other methods we could try.</p>
+<ul>
+<li>Use SEF extensions such as Sh404SEF, JoomSEF, SEF Advance etc, you can search "SEF" on <a href="http://extensions.joomla.org/" target="_blank">JED(Joomla! Extensions Directory)</a> and try them, but most of them are paid extensions.</li>
+<li>If you're familar with regex rules, you may try to add some rules to the .htaccess and try to rewrite the URL. But as we know, the .htaccess gets some overhead.</li>
+<li>When you just have a very small site, there's limited articles there, you could create one menu item for each article, and the id issues are solved.</li>
+</ul>
+<p>If you want to research more, I recommend the post "<a href="http://forum.joomla.org/viewtopic.php?f=712&amp;t=826165" target="_blank">Remove article id from url for joomla 3.0</a>" on the Offical Joomla Forum.</p></div>
+	
+        <hr>
+
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://localhost:8000/archives.html">Archives</a>
+                <li><a href="http://localhost:8000/tags.html">Tags</a>
+
+
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://localhost:8000/category/bian-cheng.html">编程</a></li>
+                <li><a href="http://localhost:8000/category/jian-kang.html">健康</a></li>
+                <li><a href="http://localhost:8000/category/jiao-yu.html">教育</a></li>
+                <li><a href="http://localhost:8000/category/ying-xiao.html">营销</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
+<img rel="license" alt="Creative Commons License" src="http://www.vincentping.com/images/cc_88_31.png" /></p>
+<p>&copy; 2018 平文胜的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
+<p> &nbsp;</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://localhost:8000/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

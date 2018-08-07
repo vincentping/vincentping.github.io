@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+    <meta charset="utf-8">
+    <title>平文胜的网站 - 动态网站的搜索引擎策略</title>
+    <meta name="description" content="">
+    <meta name="author" content="平文胜">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://localhost:8000/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://localhost:8000/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/local.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://localhost:8000">平文胜的网站</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>动态网站的搜索引擎策略</h1>
+2003-09-08
+
+by <a class="url fn" href="http://localhost:8000/author/ping-wen-sheng.html">平文胜</a>
+ 
+
+
+        </div>
+	
+        <div><blockquote>
+<p style="background-color: #ccffcc;">本文写于2003年9月，此处保留原文，仅供参考。</p>
+</blockquote>
+<h1>一、动态网站的出现和优势</h1>
+<p>最早互联网出现时，站点内容都是以HTML静态页面形式存放在服务器上，访问者浏览到的页面都是这些实际存在的静态页面。随着技术的发展，特别是数据库和脚本技术PERL、ASP、PHP和JSP的发展，越来越多的站点都开始采取动态的页面发布手段。比如，我们在GOOGLE.COM上搜索一个内容，得到的搜索结果页面文件"本身"在GOOGLE服务器上并不存在，而是通过程序在我们输入搜索内容时调用后台数据库实时生成的，也就是说，这些结果页面是动态的。</p>
+<p>静态页面的站点只涉及文件的传输问题，而动态站点则复杂得多，用户和站点之间出现大量的交互，网站不再仅仅是内容的发布，而是成为了一种"应用（Application）"，是软件业向互联网上的扩张，从软件的角度看，动态站点是逻辑应用层和数据层的分离，数据库负责站点数据的存储管理，而ASP、PHP、JSP等负责处理站点的逻辑应用。这样做的好处除了增加很多交互功能外，更重要的是站点的维护、更新和升级都方便了许多。可以说，没有动态网站技术，目前互联网上的这些超大型站点就不可能出现。</p>
+<h1>二、搜索引擎抓取动态网站页面时面临的问题</h1>
+<p>从用户的角度看，动态网站非常不错，丰富了站点的功能，但是对于搜索引擎来说，情况就不同了。</p>
+<p>根本的问题在于"输入"和"选择"，动态页面是在用户"输入内容"或者进行"选择"时动态生成的，但是搜索引擎的"搜索机器人"无法"输入"和"选择"。比如我们要在当当书店站点查看冯英健的《网络营销基础与实践》一书，介绍页面是动态生成的，URL地址是：http://www.dangdang.com/product_detail/product_detail.asp?product_id=493698 这里在"？"后面的product_id参数值需要我们输入的，"搜索机器人"可以通过链接找到http://www.dangdang.com/product_detail/product_detail.asp 页面，但是它无法输入"？"后面的product_id参数值，从而无法抓取这个页面文件。</p>
+<p>另外，对于通过链接达到这种带"？"的页面，技术上搜索引擎可以抓取，但是一般情况下搜索引擎选择不去抓取，这是为了避免一种叫"搜索机器人陷阱（spider traps）"的脚本错误，这种错误会让搜索机器人进行无限循环的抓取，无法退出而浪费时间。</p>
+<h1>三、动态网站的搜索引擎策略</h1>
+<p>动态网站要被搜索引擎抓取，可以采用内容发布系统软件将动态站点转化成静态页面，这种办法对于页面发布后变动少的站点比较合适，比如一些新闻类的站点（如新浪的新闻中心：http://news.sina.com.cn/ ）。</p>
+<p>一般的动态网站可以通过下面的办法让搜索引擎抓取： 首先，我们要让动态页面的URL地址中没有"？"，让动态页面看上去象"静态页面"。看看下面这个页面http://www.amazon.com/exec/obidos/tg/detail/-/043935806X/ ，这明显是一个动态页面，但是URL地址看上去却象"静态页面"。针对不同的动态技术可以采用下面技术实现：</p>
+<ul>
+<li>对于采用ASP技术的动态页面Exception Digital公司提供一种工具叫着XQASP（http://www.xde.net/products/product_xqasp.htm ）可以将"？"替换为"/"。</li>
+<li>对于采用ColdFusion技术的站点，需要重新配置服务器上的ColdFusion，用"/"代替"？"将参数传输到URL，更详细的信息请见http://coldfusion.com/ 站点。</li>
+<li>对于使用Apache服务器的站点，可以使用rewrite模块将带参数的URL地址转换成搜索引擎支持的形式，该模块mod_rewrite在Apache服务器中不是缺省安装的，详细的信息请见<a href="http://httpd.apache.org/docs/mod/mod_rewrite.html" target="_blank">http://httpd.apache.org/docs/mod/mod_rewrite.html</a>。</li>
+<li>对于其他的动态技术也能找到对应的方法改变URL的形式。</li>
+</ul>
+<p>然后，要创建一些静态页面指向这些动态页面（以改变过的URL链接）。</p>
+<p>前面说过，搜索引擎机器人并不会自己"输入"参数，所以要让上面这些动态页面被搜索引擎抓取，我们还需要告诉机器人这些页面的地址（也就是参数）。我们可以创建一些静态的页面，一般在网络营销中称? "gateway page"（入口页面），这些页面上有大量指向这些动态页面的链接。</p>
+<p>将这些入口页面的地址提交到搜索引擎，这些页面和链接的动态页面（改变过URL形式）就能都被搜索引擎抓取了。</p>
+<h1>四、搜索引擎对动态网站支持的改进</h1>
+<p>在我们调整动态站点适应搜索引擎的同时，搜索引擎也在发展。到目前为止，绝大多数的搜索引擎还不支持动态页面的抓取，但是GOOGLE、HOTBOT等和国内的百度开始尝试抓取动态网站页面（包括? "？"的页面），这就是我们现在在这些搜索引擎进行搜索时，结果中出现动态链接的原因。</p>
+<p>能在URL中不用参数尽量不要用，一些参数转移到其他地方，这样可以增加动态页面被抓取的深度和数目。</p>
+<p>这些搜索引擎抓取动态页面时，为了避免"搜索机器人陷阱"，都只抓取从静态页面（至少"看上去"是静态的页面）链接到的动态页面，而从动态页面链接出的动态页面都不再抓取。</p>
+<p>所以一个动态站点如果只针对上面这些搜索引擎，可以在上面小节介绍方法的基础上简化：只用创建一些入口页面，链接很多动态页面，然后将这些入口页面递交到这些搜索引擎就可以了。</p>
+<p>对于直接使用动态的URL地址，请注意：</p>
+<ul>
+<li>文件URL中不要有Session Id，同时不要用ID作为参数名称（特别是对于GOOGLE）；　　</li>
+<li>参数越少越好，尽量不要超过2个。</li>
+</ul></div>
+	
+        <hr>
+
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://localhost:8000/archives.html">Archives</a>
+                <li><a href="http://localhost:8000/tags.html">Tags</a>
+
+
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://localhost:8000/category/bian-cheng.html">编程</a></li>
+                <li><a href="http://localhost:8000/category/jian-kang.html">健康</a></li>
+                <li><a href="http://localhost:8000/category/jiao-yu.html">教育</a></li>
+                <li><a href="http://localhost:8000/category/ying-xiao.html">营销</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
+<img rel="license" alt="Creative Commons License" src="http://www.vincentping.com/images/cc_88_31.png" /></p>
+<p>&copy; 2018 平文胜的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
+<p> &nbsp;</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://localhost:8000/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

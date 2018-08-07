@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html lang="chinese (simplified)">
+<head>
+    <meta charset="utf-8">
+    <title>平文胜的网站 - robots.txt和Robots META标签</title>
+    <meta name="description" content="">
+    <meta name="author" content="平文胜">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://localhost:8000/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://localhost:8000/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/local.css" rel="stylesheet">
+    <link href="http://localhost:8000/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://localhost:8000">平文胜的网站</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>robots.txt和Robots META标签</h1>
+2003-10-18
+
+by <a class="url fn" href="http://localhost:8000/author/ping-wen-sheng.html">平文胜</a>
+ 
+
+
+        </div>
+	
+        <div><blockquote>
+<p style="background-color: #ccffcc;">本文写于2003年10月，此处保留原文，仅供参考。</p>
+</blockquote>
+<p>我们知道，搜索引擎都有自己的“搜索机器人”（ROBOTS），并通过这些ROBOTS在网络上沿着网页上的链接（一般是http和src链接）不断抓取资料建立自己的数据库。</p>
+<p>对于网站管理者和内容提供者来说，有时候会有一些站点内容，不希望被ROBOTS抓取而公开。为了解决这个问题，ROBOTS开发界提供了两个办法：一个是robots.txt，另一个是The Robots META标签。</p>
+<h1>一、robots.txt</h1>
+<h2>1、什么是robots.txt？</h2>
+<p>robots.txt是一个纯文本文件，通过在这个文件中声明该网站中不想被robots访问的部分，这样，该网站的部分或全部内容就可以不被搜索引擎收录了，或者指定搜索引擎只收录指定的内容。</p>
+<p>当一个搜索机器人访问一个站点时，它会首先检查该站点根目录下是否存在robots.txt，如果找到，搜索机器人就会按照该文件中的内容来确定访问的范围，如果该文件不存在，那么搜索机器人就沿着链接抓取。</p>
+<p>robots.txt必须放置在一个站点的根目录下，而且文件名必须全部小写。</p>
+<table>
+<thead>
+<tr>
+<th>网站 URL</th>
+<th>相应的 robots.txt的 URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http://www.w3.org/</td>
+<td>http://www.w3.org/robots.txt</td>
+</tr>
+<tr>
+<td>http://www.w3.org:80/</td>
+<td>http://www.w3.org:80/robots.txt</td>
+</tr>
+<tr>
+<td>http://www.w3.org:1234/</td>
+<td>http://www.w3.org:1234/robots.txt;</td>
+</tr>
+<tr>
+<td>http://w3.org/</td>
+<td>http://w3.org/robots.txt</td>
+</tr>
+</tbody>
+</table>
+<h2>2、 robots.txt的语法</h2>
+<p>"robots.txt"文件包含一条或更多的记录，这些记录通过空行分开（以CR,CR/NL, or NL作为结束符），每一条记录的格式如下所示：</p>
+<p><code>&lt;field&gt;:&lt;optionalspace&gt;&lt;value&gt;&lt;optionalspace&gt;</code></p>
+<p>在该文件中可以使用#进行注解，具体使用方法和UNIX中的惯例一样。该文件中的记录通常以一行或多行User-agent开始，后面加上若干Disallow行,详细情况如下：</p>
+<p><code>User-agent:</code></p>
+<p>该项的值用于描述搜索引擎robot的名字，在"robots.txt"文件中，如果有多条User-agent记录说明有多个robot会受到该协议的限制，对该文件来说，至少要有一条User-agent记录。如果 该项的值设为<em>，则该协议对任何机器人均有效，在"robots.txt"文件中， "User-agent：</em>"这样的记录只能有一条。</p>
+<p><code>Disallow :</code></p>
+<p>该项的值用于描述不希望被访问到的一个URL，这个URL可以是一条完整的路径，也可以是部分的，任何以Disallow 开头的URL均不会被robot访问到。例如"Disallow: /help"对/help.html 和/help/index.html都不允许搜索引擎访问，而"Disallow: /help/"则允许robot访问/help.html，而不能访问/help/index.html。</p>
+<p>任何一条Disallow记录为空，说明该网站的所有部分都允许被访问，在"/robots.txt"文件中，至少要有一条Disallow记录。如果 "/robots.txt"是一个空文件，则对于所有的搜索引擎 robot，该网站都是开放的。</p>
+<p>下面是一些robots.txt基本的用法：</p>
+<ul>
+<li>
+<p>禁止所有搜索引擎访问网站的任何部分：</p>
+<p><code>User-agent: *</code></p>
+<p><code>Disallow: /</code></p>
+</li>
+<li>
+<p>允许所有的robot访问</p>
+<p><code>User-agent: *</code></p>
+<p><code>Disallow:</code></p>
+<p>或者也可以建一个空文件 "/robots.txt" file</p>
+</li>
+<li>
+<p>禁止所有搜索引擎访问网站的几个部分（下例中的cgi-bin、tmp、private目录）</p>
+<p><code>User-agent: *</code></p>
+<p><code>Disallow: /cgi-bin/</code></p>
+<p><code>Disallow: /tmp/</code></p>
+<p><code>Disallow: /private/</code></p>
+</li>
+<li>
+<p>禁止某个搜索引擎的访问（下例中的BadBot）</p>
+<p><code>User-agent: BadBot</code></p>
+<p><code>Disallow: /</code></p>
+</li>
+<li>
+<p>只允许某个搜索引擎的访问（下例中的WebCrawler）</p>
+<p><code>User-agent: WebCrawler</code></p>
+<p><code>Disallow:</code></p>
+<p><code>User-agent: *</code></p>
+<p><code>Disallow: /</code></p>
+</li>
+</ul>
+<h2>3、 常见搜索引擎机器人Robots名字</h2>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>搜索引擎</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Baiduspider</td>
+<td>http://www.baidu.com</td>
+</tr>
+<tr>
+<td>Scooter</td>
+<td>http://www.altavista.com</td>
+</tr>
+<tr>
+<td>ia_archiver</td>
+<td>http://www.alexa.com</td>
+</tr>
+<tr>
+<td>Googlebot</td>
+<td>http://www.google.com</td>
+</tr>
+<tr>
+<td>FAST-WebCrawler</td>
+<td>http://www.alltheweb.com</td>
+</tr>
+<tr>
+<td>Slurp</td>
+<td>http://www.inktomi.com</td>
+</tr>
+<tr>
+<td>MSNBOT</td>
+<td>http://search.msn.com</td>
+</tr>
+</tbody>
+</table>
+<h2>4、 robots.txt举例</h2>
+<p>下面是一些著名站点的robots.txt，可以学习参考：</p>
+<p><a href="http://www.cnn.com/robots.txt" target="_blank">http://www.cnn.com/robots.txt</a></p>
+<p><a href="http://www.google.com/robots.txt" target="_blank">http://www.google.com/robots.txt</a></p>
+<p><a href="http://www.ibm.com/robots.txt" target="_blank">http://www.ibm.com/robots.txt</a></p>
+<p><a href="http://www.oracle.com/robots.txt" target="_blank">http://www.oracle.com/robots.txt</a></p>
+<p><a href="http://www.taobao.com/robots.txt" target="_blank">http://www.taobao.com/robots.txt</a></p>
+<h2>5、 常见robots.txt错误</h2>
+<ul>
+<li>
+<p>颠倒了顺序，错误写成：</p>
+<p><code>User-agent: *</code></p>
+<p><code>Disallow: GoogleBot</code></p>
+<p>正确的应该是：</p>
+<p><code>User-agent: GoogleBot</code></p>
+<p><code>Disallow: *</code></p>
+</li>
+<li>
+<p>把多个禁止命令放在一行中：</p>
+<p>例如，错误地写成</p>
+<p><code>Disallow: /css/ /cgi-bin/ /images/</code></p>
+<p>正确的应该是</p>
+<p><code>Disallow: /css/</code></p>
+<p><code>Disallow: /cgi-bin/</code></p>
+<p><code>Disallow: /images/</code></p>
+</li>
+<li>
+<p>行前有大量空格</p>
+<p>例如写成</p>
+<div class="highlight"><pre><span></span>    `Disallow: /cgi-bin/`
+</pre></div>
+
+
+<p>尽管在标准没有谈到这个，但是这种方式很容易出问题。</p>
+</li>
+<li>
+<p>404重定向到另外一个页面：</p>
+<p>当Robot访问很多没有设置robots.txt文件的站点时，会被自动404重定向到另外一个Html页面。这时Robot常常会以处理robots.txt文件的方式处理这个Html页面文件。虽然一般这样没有 什么问题，但是最好能放一个空白的robots.txt文件在站点根目录下。</p>
+</li>
+<li>
+<p>采用大写。例如</p>
+<p><code>USER-AGENT: EXCITE</code></p>
+<p><code>DISALLOW:</code></p>
+<p>虽然标准是没有大小写的，但是目录和文件名应该小写：</p>
+<p><code>user-agent:GoogleBot</code></p>
+<p><code>disallow:</code></p>
+</li>
+<li>
+<p>语法中只有Disallow，没有Allow语法！</p>
+<p>错误的写法是：</p>
+<p><code>User-agent: Baiduspider</code></p>
+<p><code>Disallow: /john/</code></p>
+<p><code>allow: /jane/</code></p>
+</li>
+<li>
+<p>忘记了斜杠/</p>
+<p>错误的写做：</p>
+<p><code>User-agent: Baiduspider</code></p>
+<p><code>Disallow: css</code></p>
+<p>正确的应该是</p>
+<p><code>User-agent: Baiduspider</code></p>
+<p><code>Disallow: /css/</code></p>
+</li>
+</ul>
+<p>Google网站上有一个工具专门检查robots.txt文件的有效性（需要google账户）：</p>
+<p><a href="https://www.google.com/webmasters/tools/robots-testing-tool" target="_blank">https://www.google.com/webmasters/tools/robots-testing-tool</a></p>
+<h1>二、Robots META标签</h1>
+<h2>1、什么是Robots META标签</h2>
+<p>Robots.txt文件主要是限制整个站点或者目录的搜索引擎访问情况，而Robots META标签则主要是针对一个个具体的页面。和其他的META标签（如使用的语言、页面的描述、关键词等）一 样，Robots META标签也是放在页面的中，专门用来告诉搜索引擎ROBOTS如何抓取该页的内容。具体的形式类似（见黑体部分）：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;title&gt;</span>时代营销--网络营销专业门户<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;Robots&quot;</span> <span class="na">content=</span><span class="s">&quot;index,follow&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">CONTENT=</span><span class="s">&quot;text/html; charset=gb2312&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;营销,...&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">content=</span><span class="s">&quot;时代营销网是.....&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/public/css.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+…
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></div>
+
+
+<h1>2、Robots META标签的写法：</h1>
+<p>Robots META标签中没有大小写之分，name=”Robots”表示所有的搜索引擎，可以针对某个具体搜索引擎写为name=”BaiduSpider”。co
+ntent部分有四个指令选项：index、noindex、 follow、nofollow，指令间以“,”分隔。</p>
+<p>INDEX 指令告诉搜索机器人抓取该页面；</p>
+<p>FOLLOW 指令表示搜索机器人可以沿着该页面上的链接继续抓取下去；</p>
+<p>Robots Meta标签的缺省值是INDEX和FOLLOW，只有inktomi除外，对于它，缺省值是INDEX,NOFOLLOW。</p>
+<p>这样，一共有四种组合：</p>
+<ul>
+<li>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="INDEX,FOLLOW"&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="NOINDEX,FOLLOW"&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="INDEX,NOFOLLOW"&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW"&gt;</code></p>
+</li>
+</ul>
+<p>其中，</p>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="INDEX,FOLLOW"&gt;</code></p>
+<p>可以写成：</p>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="ALL"&gt;</code></p>
+<p>而</p>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="NOINDEX,NOFOLLOW"&gt;</code></p>
+<p>可以写成：</p>
+<p><code>&lt;META NAME="ROBOTS" CONTENT="NONE"&gt;</code></p>
+<p>需要注意的是：上述的robots.txt和Robots META标签限制搜索引擎机器人（ROBOTS）抓取站点内容的办法只是一种规则，需要搜索引擎机器人的配合才行，并不是每个ROBOTS都遵守的。</p>
+<p>目前看来，绝大多数的搜索引擎机器人都遵守robots.txt的规则，而对于Robots META标签，目前支持的并不多，但是正在逐渐增加，如著名搜索引擎GOOGLE就完全支持，而且GOOGLE还增 加了一个指令“archive”，可以限制GOOGLE是否保留网页快照。例如：</p>
+<p><code>&lt;META NAME="googlebot" CONTENT="index,follow,noarchive"&gt;</code></p>
+<p>表示抓取该站点中页面并沿着页面中链接抓取，但是不在GOOLGE上保留该页面的网页快照。</p></div>
+	
+        <hr>
+
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://localhost:8000/archives.html">Archives</a>
+                <li><a href="http://localhost:8000/tags.html">Tags</a>
+
+
+
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://localhost:8000/category/bian-cheng.html">编程</a></li>
+                <li><a href="http://localhost:8000/category/jian-kang.html">健康</a></li>
+                <li><a href="http://localhost:8000/category/jiao-yu.html">教育</a></li>
+                <li><a href="http://localhost:8000/category/ying-xiao.html">营销</a></li>
+                   
+            </ul>
+            </div>
+
+
+
+
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
+<img rel="license" alt="Creative Commons License" src="http://www.vincentping.com/images/cc_88_31.png" /></p>
+<p>&copy; 2018 平文胜的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
+<p> &nbsp;</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://localhost:8000/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>
