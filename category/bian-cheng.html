@@ -1,23 +1,23 @@
 ﻿<!DOCTYPE html>
-<html lang="chinese (simplified)">
+<html lang="zh_cn">
 <head>
     <meta charset="utf-8">
-    <title>平文胜的网站 - 编程</title>
+    <title>Vincent Ping的网站 - 编程</title>
     <meta name="description" content="">
-    <meta name="author" content="平文胜">
+    <meta name="author" content="Vincent Ping">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
+    <script src="../theme/html5.js"></script>
     <![endif]-->
 
     <!-- Le styles -->
-    <link href="/theme/bootstrap.min.css" rel="stylesheet">
-    <link href="/theme/bootstrap.min.responsive.css" rel="stylesheet">
-    <link href="/theme/local.css" rel="stylesheet">
-    <link href="/theme/pygments.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.css" rel="stylesheet">
+    <link href="../theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="../theme/local.css" rel="stylesheet">
+    <link href="../theme/pygments.css" rel="stylesheet">
 
     <!-- So Firefox can bookmark->"abo this site" -->
 
@@ -35,7 +35,7 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="https://vincentping.com/">平文胜的网站</a>
+        <a class="brand" href="https://vincentping.com">Vincent Ping的网站</a>
 
         <div class="nav-collapse">
         <ul class="nav">
@@ -59,123 +59,113 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="/cn/remove-category-article-id-from-url-in-joomla-3-cn.html"><h1>如何去除Joomla 3网站静态化URL地址中的分类ID和文章ID</h1></a>
-﻿2015-10-01
+            <a href="../cn/the-reason-we-should-learn-tkinter-for-gui-application.html"><h1>Python自带的GUI库Tkinter是否值得学习？</h1></a>
+﻿2020-05-29
 
-by 平文胜 
+by Vincent Ping 
  
 
-  | Category: <a href="/category/bian-cheng.html">编程</a> 
+  | Category: <a href="../category/bian-cheng.html">编程</a> 
 
  
-   | Tags: <a href="/tag/joomla.html">Joomla</a>  
+   | Tags: <a href="../tag/python.html">Python</a> <a href="../tag/tkinter.html">Tkinter</a> <a href="../tag/gui.html">GUI</a>  
         </div>
         
-        <div><blockquote>
-<p style="background-color: #ccffcc;">目前本站使用工具直接生成静态页面，不再使用Joomla!，此处保留原文，仅供参考。</p>
-</blockquote>
-<h1>一、问题</h1>
-<p>我的站点vincentping.com是使用Joomla 3.4.4版本管理的，Joomla是一个非常专业的网站内容管理系统（CMS），但是其在SEO搜索引擎优化后的URL模式上有一些不足。</p>
-<p>我首先创建了一些分类和文章，然后在系统管理后台的"Global Configuration"设置"SEO Settings"。其中的选项</p>
+        <div><h2>Tkinter是什么？</h2>
+<p>要了解Tkinter，首先要从Tcl编程语言说起。Tcl语言全称是“Tool Command Language”，是John Ousterman在1980年代创建的一种解释型编程语言，当时John Ousterman正在加州大学Berkeley分校任职，需要一种相对简明的开发工程工具的编程语言，所以他就用C语言写了这个解释型语言，感觉故事是不是有点像Python！</p>
+<p>接下来，他又用C结合Tcl写了个专门用于GUI编程的库，叫着Tk。当年这个Tcl/Tk在1980、1990年代可是非常的流行，尤其是在学术界、工程界和Unx程序员中。</p>
+<p>而Tkinter又是什么呢？</p>
+<p>我们知道Python最早是在1994年发行其1.1版本的，标准库里需要各方面的库，包括文本处理、图像处理等等，当然也不能少了GUI。Guido van Rossum（Python语言创始人）觉得Tk这个库现成的，而且还挺好用，就不再另造轮子了。他用C语言写了个在Python中可以调用Tk的接口，再把Tcl/Tk一起打包在标准库里，这样Python就可以实现GUI的开发功能。而Python中的这个接口，就是Tkinter。</p>
+<p>你是不是会说“怎么能这样！”， 其实呢，这个也很正常啊，好东西，要大家一起分享嘛！不仅Python里是这么直接调用Tk库，Perl、Haskell里面的GUI库也是这个Tcl/Tk。</p>
+<h2>Tkinter值得学吗？</h2>
+<p>了解了上面这段Tcl、Tk和Tkinter的历史，我们再来谈谈这些是否值得学习。</p>
+<p>其实，任何技术的选择与否，都是看这种技术的特点是否适合你的需求场景。对于Tkinter来说，它的特点大致是这么几个：</p>
 <ul>
-<li>Search Engine Friendly URLs 设为 Yes</li>
-<li>use URL Rewriting 设为 Yes</li>
-<li>Adds Suffix to URL 也设为 Yes</li>
+<li>Python标准库里缺省自带</li>
 </ul>
-<p>如下图：</p>
-<p><img alt="seo setting" src="/images/seo-setting.png" style="border: 1px solid #000000;"></p>
-<p>这个时候访问站点，文章的URL地址变成如下这样的形式：</p>
-<p><strong>http://www.vincentping.com/cn/8-blogcn/14-remove-category-article-id-from-url-in-joomla-3-cn.html</strong></p>
-<p>相对于原来没有SEO优化前的地址：</p>
-<p><strong>http://www.vincentping.com/index.php?option=com_content&amp;view=article&amp;id=14:remove-category-article-id-from-url-in-joomla-3-cn&amp;catid=8&amp;lang=cn</strong></p>
-<p>上面的优化地址要好得多了，但是还有一些小小的不爽，比如在分类前的8-和文章名之前的14-。很显然这些数值都是数据库中的ID值，这样程序在查找后台数据库时，有了这些值会更加高效，但是对于普通访问者来说，这些数值就显得有些奇怪，而且会让站点显得不够专业，不够”高大上“！</p>
-<p>怎么办呢？经过在google上查询，网上有大量的相关讨论。经过不断地摸索和尝试，下面是我最终使用的解决办法。</p>
-<h1>二、解决方法</h1>
-<ol>
-<li>
-<p>在Joomla系统的目录下，找到下面php文章：“components/com_content/router.php“；</p>
-</li>
-<li>
-<p>查找到下面代码：</p>
-<p><code>$advanced = $params-&gt;get('sef_advanced_link', 0);</code></p>
-</li>
-<li>
-<p>把其中 "0" 改为 "1"，修改结果如下：</p>
-<p><code>$advanced = $params-&gt;get('sef_advanced_link', 1);</code></p>
-<p>在这个router.php文件中共有两处需要修改的地方。</p>
-</li>
-<li>
-<p>继续在该router.php文件中，找到下面的代码段，然后注释掉：</p>
-<div class="highlight"><pre><span></span>if (strpos($segments[0], &#39;:&#39;) === false)
-{
-     $vars[&#39;view&#39;] = &#39;article&#39;;
-     $vars[&#39;id&#39;] = (int) $segments[0];
-
-     return $vars;
- }
-</pre></div>
-
-
-<p>注释成：</p>
-<div class="highlight"><pre><span></span><span class="cm">/* if (strpos($segments[0], &#39;:&#39;) === false)</span>
-<span class="cm"> {</span>
-<span class="cm">     $vars[&#39;view&#39;] = &#39;article&#39;;</span>
-<span class="cm">     $vars[&#39;id&#39;] = (int) $segments[0];</span>
-
-<span class="cm">     return $vars;</span>
-<span class="cm"> } */</span><span class="w"></span>
-</pre></div>
-
-
-</li>
-</ol>
-<p>然后整个修改就完成了！</p>
-<p>这个时候，该页面的URL地址变成：</p>
-<p><strong>http://www.vincentping.com/cn/remove-category-article-id-from-url-in-joomla-3-cn.html</strong></p>
-<p>提示：一旦以后Joomla版本升级，上述的修改可能被覆盖，就需要重新做。</p>
-<h1>三、一些其他可以尝试的方法</h1>
-<p>我在网络上搜索解决方法时，发现这个URL中数值问题对于Joomla社区已经是一个很”古老“的问题了，但是在核心代码中一直没有得到解决。所以市面上已经出现了许多的解决办法。下面这些方法都可以试试：</p>
+<p>这个Tkinter可以说，就相当于Python事实上的标准GUI库。有啥好处呢？有Python的地方就有Tkinter，不用另外找第三方库单独安装，从而避免一堆兼容、版本等等的问题，这个对于初学者就比较友好。</p>
 <ul>
-<li>使用第三方的SEF扩展，比如Sh404SEF，JoomSEF和SEF Advance等。可以到<a href="http://extensions.joomla.org/" target="_blank">JED(Joomla! Extensions Directory)</a> 搜索”SEF“，就可以找到很多类似扩展。扩展的问题是很多需要付费，会增加服务器负担，而且升级和维护起来也是个问题。</li>
-<li>如果你对正则表达式比较熟悉，可以在.htaccess文件中增加解析和重定向规则来解决这些问题。当然使用太多.htaccess规则是会影响服务器效率的。</li>
-<li>最后，如果你的站点不大，文章也不多，那么可以像上面介绍的建立菜单项的方法，为每篇文章都建立一个菜单项，这个文章数值问题也能完全解决。</li>
+<li>Tkinter的API比较稳定</li>
 </ul>
-<p>如果想继续仔细研究下这个URL中的文章ID数值问题，推荐大家可以看看这个在Joomla官方论坛上的帖子："<a href="http://forum.joomla.org/viewtopic.php?f=712&amp;t=826165" target="_blank">Remove article id from url for joomla 3.0</a>"。</p></div>
+<p>十几年前开发的工具，现在基本还能运行。Tcl/Tk从1990年代中后期，更新就非常慢了（基本就没变化），Tcl/Tk8.5版本一直用，直到2012年才憋出个8.6版本。更新慢也有好处，写的程序不会过几年就不好用了。</p>
+<ul>
+<li>Tkinter就是个单纯的GUI库</li>
+</ul>
+<p>Tkinter就是个单纯的GUI库，没有其他东西，真正要实现什么功能，都是依赖Python其他的库。不像PyQT、wxPython这些大而全的框架，什么都要自己弄一套。</p>
+<ul>
+<li>简洁</li>
+</ul>
+<p>这个特点可以是优点：适合入门、小型应用的开发，但是也导致Tkinter的两大问题，一个是界面相对简陋，虽然现在Tk8.6有所进步，但是比起其他框架还是有不少差距；另一个是提供的控件都是比较基础的，稍微复杂一些的，比如HTML显示组件就要另外想办法。</p>
+<p>这么看，Tkinter适合什么场合下学习和使用呢？</p>
+<ul>
+<li>如果你是初入门的Python程序员，对Python的基本语法已经有所了解，想做点小应用实践实践，那么推荐你可以学习Tkinter。</li>
+</ul>
+<p>因为如果一直开发命令行应用，很多时候不直观，成就感比较低，不能促进进一步学习的兴趣。</p>
+<p>而如果这个时候，直接上手开发Web应用，还需要了解一堆html、css、js等前端的东西，比较麻烦，而且就算开发出来也就本机跑跑，真要部署到网络上还有域名、服务器一系列的问题。</p>
+<p>而学了Tkinter后，马上可以做一点小应用，比如本地文件管理小工具、看图片的应用、解压小应用……这些小应用的开发，实际上主要是对Python处理这些问题方法和库的了解，Tkinter只是封装一个UI。也就是说你其实是在进一步学习Python。当然，你也可以不断优化这些小工具，当成自己的定制化工具，甚至可以分享给朋友用用，乐趣无穷。</p>
+<ul>
+<li>对于有一定基础的Python程序员，什么时候适合学下Tkinter呢？</li>
+</ul>
+<p>需要写一些小工具的时候，本身是Python程序员，难免工作中需要一些桌面工具，解决些小问题，学习Tkinter绝对是投入少、产出高的选择。比如笔者以前同事做测试，一些配置工作很麻烦，且很易出错，这个时候用tkinter写个配置小工具，就方便很多。</p>
+<p>另一个是可以用Tkinter写一些应用原型。很多时候，一个应用的需求还不是很明确，可以用Tkinter先快速写一个，拿出来大家讨论，进一步明确需求。等真正需求明确了，再根据需求选择技术方案。</p>
+<p><strong>总结下：</strong></p>
+<p>Tkinter的特点，比较适合初学者学习Python、Python程序员开发一些小工具、Python程序员做原型应用。</p>
+<p>而如果你的目标是开发商用的桌面应用程序的话，那Tkinter可能不适用，建议还是使用PyQT或者直接使用其他语言如C++。</p></div>
         <hr />
     </div>
 		
 
- 
+
         
 
  
 
     <div class='article'>
-        <a href="/en/remove-category-article-id-from-url-in-joomla-3.html"><h2>Remove Category and Article ID from URL in Joomla 3</h2></a>
+        <a href="../cn/remove-category-article-id-from-url-in-joomla-3-cn.html"><h2>如何去除Joomla 3网站静态化URL地址中的分类ID和文章ID</h2></a>
         <div class= "well small"> ﻿2015-10-01
 
 by Vincent Ping 
  
 
-  | Category: <a href="/category/bian-cheng.html">编程</a> 
+  | Category: <a href="../category/bian-cheng.html">编程</a> 
 
  
-   | Tags: <a href="/tag/joomla.html">Joomla</a>  </div>
-        <div class="summary"><p>Joomla is a very professional content management system (CMS), but there're some minor shortcoming within the SEO URL Mapping.</p> <a class="btn btn-info xsmall" href="/en/remove-category-article-id-from-url-in-joomla-3.html">read more</a></div>
+   | Tags: <a href="../tag/joomla.html">Joomla</a>  </div>
+        <div class="summary"><p>Joomla是一个非常专业的网站内容管理系统（CMS），但是其在SEO搜索引擎优化后的URL模式上有一些不足。这里记录了我的一些改进方法。</p> <a class="btn btn-info xsmall" href="../cn/remove-category-article-id-from-url-in-joomla-3-cn.html">read more</a></div>
+    </div>	
+				
+
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="../en/remove-category-article-id-from-url-in-joomla-3.html"><h2>Remove Category and Article ID from URL in Joomla 3</h2></a>
+        <div class= "well small"> ﻿2015-10-01
+
+by Vincent Ping 
+ 
+
+  | Category: <a href="../category/bian-cheng.html">编程</a> 
+
+ 
+   | Tags: <a href="../tag/joomla.html">Joomla</a>  </div>
+        <div class="summary"><p>Joomla is a very professional content management system (CMS), but there're some minor shortcoming within the SEO URL Mapping.</p> <a class="btn btn-info xsmall" href="../en/remove-category-article-id-from-url-in-joomla-3.html">read more</a></div>
     </div>	
 				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="/category/bian-cheng.html">1</a></li>
+    <li class="active"><a href="../category/bian-cheng.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
 </ul>
 </div>
- 
-  
+
+
         </div>
         
         <div class="span3">
@@ -186,8 +176,8 @@ by Vincent Ping
                 Site
                 </li>
             
-                <li><a href="/archives.html">Archives</a>
-                <li><a href="/tags.html">Tags</a>
+                <li><a href="../archives.html">Archives</a>
+                <li><a href="../tags.html">Tags</a>
 
 
 
@@ -202,10 +192,10 @@ by Vincent Ping
                 Categories
                 </li>
                 
-                <li><a href="/category/bian-cheng.html">编程</a></li>
-                <li><a href="/category/jian-kang.html">健康</a></li>
-                <li><a href="/category/jiao-yu.html">教育</a></li>
-                <li><a href="/category/ying-xiao.html">营销</a></li>
+                <li><a href="../category/bian-cheng.html">编程</a></li>
+                <li><a href="../category/jian-kang.html">健康</a></li>
+                <li><a href="../category/jiao-yu.html">教育</a></li>
+                <li><a href="../category/ying-xiao.html">营销</a></li>
                    
             </ul>
             </div>
@@ -216,7 +206,7 @@ by Vincent Ping
                 Pages
                 </li>
                 
-                <li><a href="/pages/contact.html">联系作者</a></li>
+                <li><a href="../pages/contact.html">联系作者</a></li>
                
             </ul>
             </div>
@@ -230,13 +220,13 @@ by Vincent Ping
 <br />
 <p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
 <img rel="license" alt="Creative Commons License" src="/images/cc_88_31.png" /></p>
-<p>&copy; 2018 平文胜的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
+<p>&copy; 2020 Vincent Ping的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
 <p> &nbsp;</p>
 </footer>
 
 </div> <!-- /container -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="/theme/bootstrap-collapse.js"></script>
+<script src="../theme/bootstrap-collapse.js"></script>
  
 </body>
 </html>
