@@ -59,8 +59,8 @@
 
     <div class='article'>
         <div class="content-title">
-            <a href="../cn/the-reason-we-should-learn-tkinter-for-gui-application.html"><h1>Python自带的GUI库Tkinter是否值得学习？</h1></a>
-﻿2020-05-29
+            <a href="../cn/the-four-steps-to-build-a-tkinter-application.html"><h1>Hello World，编写一个Tkinter程序需要哪些基本步骤？</h1></a>
+﻿2020-10-13
 
 by Vincent Ping 
  
@@ -71,49 +71,174 @@ by Vincent Ping
    | Tags: <a href="../tag/python.html">Python</a> <a href="../tag/tkinter.html">Tkinter</a> <a href="../tag/gui.html">GUI</a>  
         </div>
         
-        <div><h2>Tkinter是什么？</h2>
-<p>要了解Tkinter，首先要从Tcl编程语言说起。Tcl语言全称是“Tool Command Language”，是John Ousterman在1980年代创建的一种解释型编程语言，当时John Ousterman正在加州大学Berkeley分校任职，需要一种相对简明的开发工程工具的编程语言，所以他就用C语言写了这个解释型语言，感觉故事是不是有点像Python！</p>
-<p>接下来，他又用C结合Tcl写了个专门用于GUI编程的库，叫着Tk。当年这个Tcl/Tk在1980、1990年代可是非常的流行，尤其是在学术界、工程界和Unx程序员中。</p>
-<p>而Tkinter又是什么呢？</p>
-<p>我们知道Python最早是在1994年发行其1.1版本的，标准库里需要各方面的库，包括文本处理、图像处理等等，当然也不能少了GUI。Guido van Rossum（Python语言创始人）觉得Tk这个库现成的，而且还挺好用，就不再另造轮子了。他用C语言写了个在Python中可以调用Tk的接口，再把Tcl/Tk一起打包在标准库里，这样Python就可以实现GUI的开发功能。而Python中的这个接口，就是Tkinter。</p>
-<p>你是不是会说“怎么能这样！”， 其实呢，这个也很正常啊，好东西，要大家一起分享嘛！不仅Python里是这么直接调用Tk库，Perl、Haskell里面的GUI库也是这个Tcl/Tk。</p>
-<h2>Tkinter值得学吗？</h2>
-<p>了解了上面这段Tcl、Tk和Tkinter的历史，我们再来谈谈这些是否值得学习。</p>
-<p>其实，任何技术的选择与否，都是看这种技术的特点是否适合你的需求场景。对于Tkinter来说，它的特点大致是这么几个：</p>
-<ul>
-<li><strong>Python标准库里缺省自带</strong></li>
-</ul>
-<p>这个Tkinter可以说，就相当于Python事实上的标准GUI库。有啥好处呢？有Python的地方就有Tkinter，不用另外找第三方库单独安装，从而避免一堆兼容、版本等等的问题，这个对于初学者就比较友好。</p>
-<ul>
-<li><strong>Tkinter的API比较稳定</strong></li>
-</ul>
-<p>十几年前开发的工具，现在基本还能运行。Tcl/Tk从1990年代中后期，更新就非常慢了（基本就没变化），Tcl/Tk8.5版本一直用，直到2012年才憋出个8.6版本。更新慢也有好处，写的程序不会过几年就不好用了。</p>
-<ul>
-<li><strong>Tkinter就是个单纯的GUI库</strong></li>
-</ul>
-<p>Tkinter就是个单纯的GUI库，没有其他东西，真正要实现什么功能，都是依赖Python其他的库。不像PyQT、wxPython这些大而全的框架，什么都要自己弄一套。</p>
-<ul>
-<li><strong>简洁</strong></li>
-</ul>
-<p>这个特点可以是优点：适合入门、小型应用的开发，但是也导致Tkinter的两大问题，一个是界面相对简陋，虽然现在Tk8.6有所进步，但是比起其他框架还是有不少差距；另一个是提供的控件都是比较基础的，稍微复杂一些的，比如HTML显示组件就要另外想办法。</p>
-<p>这么看，Tkinter适合什么场合下学习和使用呢？</p>
-<ul>
-<li><strong>如果你是初入门的Python程序员，对Python的基本语法已经有所了解，想做点小应用实践实践，那么推荐你可以学习Tkinter。</strong></li>
-</ul>
-<p>因为如果一直开发命令行应用，很多时候不直观，成就感比较低，不能促进进一步学习的兴趣。</p>
-<p>而如果这个时候，直接上手开发Web应用，还需要了解一堆html、css、js等前端的东西，比较麻烦，而且就算开发出来也就本机跑跑，真要部署到网络上还有域名、服务器一系列的问题。</p>
-<p>而学了Tkinter后，马上可以做一点小应用，比如本地文件管理小工具、看图片的应用、解压小应用……这些小应用的开发，实际上主要是对Python处理这些问题方法和库的了解，Tkinter只是封装一个UI。也就是说你其实是在进一步学习Python。当然，你也可以不断优化这些小工具，当成自己的定制化工具，甚至可以分享给朋友用用，乐趣无穷。</p>
-<ul>
-<li><strong>对于有一定基础的Python程序员，什么时候适合学下Tkinter呢？</strong></li>
-</ul>
-<p>需要写一些小工具的时候，本身是Python程序员，难免工作中需要一些桌面工具，解决些小问题，学习Tkinter绝对是投入少、产出高的选择。比如笔者以前同事做测试，一些配置工作很麻烦，且很易出错，这个时候用tkinter写个配置小工具，就方便很多。</p>
-<p>另一个是可以用Tkinter写一些应用原型。很多时候，一个应用的需求还不是很明确，可以用Tkinter先快速写一个，拿出来大家讨论，进一步明确需求。等真正需求明确了，再根据需求选择技术方案。</p>
-<p><strong>总结下：</strong></p>
-<p>Tkinter的特点，比较适合初学者学习Python、Python程序员开发一些小工具、Python程序员做原型应用。</p>
-<p>而如果你的目标是开发商用的桌面应用程序的话，那Tkinter可能不适用，建议还是使用PyQT或者直接使用其他语言如C++。</p></div>
+        <div><p>前文《<a href="https://vincentping.com/cn/the-reason-we-should-learn-tkinter-for-gui-application.html" target="_blank">Python自带的GUI库Tkinter是否值得学习</a>》介绍了Tkinter库，下面我们开始使用Tkinter开发第一个GUI程序，按照惯例，编写一个Hello World程序，不过是Tkinter版本。</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">label1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+<span class="n">label1</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+
+<p>上面 helloworld1.py 是最精简Tkinter版本的Hello World程序，运行该程序得到如下结果：</p>
+<p><img alt="最简单版本的Hello World" src="../images/20201013_helloworld1.png" style="border: 1px solid #000000;"></p>
+<p>下面我们来解读下，同时进行一些简单的优化。</p>
+<p>总体来说，可以将Tkinter程序的开发工作分成四个步骤：</p>
+<h1>1、创建并设置根窗口</h1>
+<p>开发一个GUI程序，如同画画一样，首先我们要有画布，其他所有的工作都在该画布上展开。</p>
+<p>Tkinter程序中的画布就是根窗口。上面程序中第二行代码</p>
+<div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+</pre></div>
+
+
+<p>就创建了一个画布。而最后一行代码</p>
+<div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+
+<p>则运行该画布所承载的整个程序。</p>
+<p>通过上面第二行代码生成画布窗口后，我们还可以设置该窗口的一些属性，比如窗口的title，窗口的尺寸大小，窗口是否可以变化大小等。我们可以添加如下代码：</p>
+<div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>     <span class="c1"># 设置画布窗口的title</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;800x330&quot;</span><span class="p">)</span>      <span class="c1"># 设置画布窗口的尺寸</span>
+<span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>           <span class="c1"># 设置画布窗口是否能变化大小，这里设置X和Y轴都不可改变</span>
+</pre></div>
+
+
+<h1>2、选择要显示的组件（widgets）并进行对应设置</h1>
+<p>画布有了，接下来需要决定用户在程序界面上会看到哪些功能模块，比如按钮、文本输入框、多选按钮、单选按钮、进度条等等。这些模块在Tkinter中叫组件（Widgets，也有叫“控件”的），可以把它们想象成Tkinter已经准备好的模块。这些模块如同积木一样，我们要做的就是按照需求选择相应的组件，并设置每个组件的属性。</p>
+<p>上述程序中，我们就使用了一个标签Label组件，这个label1放置在根窗口root（亦即第一步中的“画布”）上，标签上的文本为“Hello World!”。</p>
+<div class="highlight"><pre><span></span><span class="n">label1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>这里，我们同样可以进一步设置该标签的一些属性，比如标签的背景颜色、高度，文本的字体、大小和颜色等。</p>
+<div class="highlight"><pre><span></span><span class="n">label1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightcyan&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;微软雅黑&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+</pre></div>
+
+
+<h1>3、组件的布局管理</h1>
+<p>完成组件的选择后，第三步我们要调整这些组件在程序中的位置和相互关系，比如是横向排列还是纵向，当程序窗口（画布）缩放时，组件本身如何变化，相互之间位置如何变化等等。Tkinter中，这个过程叫着布局管理（geometry management）。</p>
+<p>在上述程序中，我们使用了最直接的布局管理方法pack()：</p>
+<div class="highlight"><pre><span></span><span class="n">label1</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+
+
+<p>这里，pack()有一些参数可以设置，比如fill参数设置组件是否在X和Y轴方向填充空间，而expand参数则设置当组件所在窗口大小变化时，该组件是否相应扩展。</p>
+<div class="highlight"><pre><span></span><span class="n">label1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">YES</span><span class="p">)</span>
+</pre></div>
+
+
+<p>到这里，我们看看先前的Hello World程序变成如下 helloworld2.py：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;800x330&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
+
+<span class="n">label1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s2">&quot;lightcyan&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;微软雅黑&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">label1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">YES</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+
+<p>运行该程序，效果如下：</p>
+<p><img alt="第二个版本的Hello World" src="../images/20201013_helloworld2.png" style="border: 1px solid #000000;"></p>
+<h1>4、给组件编写交互功能</h1>
+<p>一个GUI程序的最大作用是我们可以和它进行交互，前面的组件的选择、设置和布局，最终都是为了让我们更好的与程序交互。</p>
+<p>所以，在这一步，我们需要给模块和组件添加事件功能。例如，点击一个按钮时会有什么样的反应；用户选择一个单选或者多选项时，选择的内容如何保存和传递；用户通过文本框输入的数据又是如何保存和传递等等。Tkinter中，我们使用回调函数（callback）来进行事件绑定（event binding）。</p>
+<p>后续我们会专门讨论回调函数的绑定，这里只通过给上述Hello World程序增加基本交互功能进行简单的说明。以下为 helloworld3.py ：</p>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;800x330&quot;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">label_text</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">label_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">set_chinese</span><span class="p">():</span>
+    <span class="n">label_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;世界，你好!&quot;</span><span class="p">)</span>
+
+
+<span class="n">label1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">label_text</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s2">&quot;lightcyan&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;微软雅黑&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+<span class="n">label1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">BOTH</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">YES</span><span class="p">)</span>
+
+<span class="n">button1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;中 文&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;宋体&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">command</span><span class="o">=</span><span class="n">set_chinese</span><span class="p">)</span>
+<span class="n">button1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+
+<p>这里，我们首先创建了一个Tkinter变量label_text，并设置其初始值为“Hello World!”。</p>
+<div class="highlight"><pre><span></span><span class="n">label_text</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">label_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>同时，在创建label1时，我们使用textvariable=label_text绑定，label1的文本就是label_text变量：</p>
+<div class="highlight"><pre><span></span><span class="n">label1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">label_text</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s2">&quot;lightcyan&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;微软雅黑&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+</pre></div>
+
+
+<p>接着，添加一个按钮组件button1，同时设置其点击回调函数为set_chinese：</p>
+<div class="highlight"><pre><span></span><span class="n">button1</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;中 文&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;宋体&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">command</span><span class="o">=</span><span class="n">set_chinese</span><span class="p">)</span>
+</pre></div>
+
+
+<p>回调函数set_chinese的定义为：</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_chinese</span><span class="p">():</span>
+    <span class="n">label_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;世界，你好!&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>也就是，当我们点击button1时，程序会调用set_chinese函数，该函数的作用是让label_text变量设置为“世界，你好！”。</p>
+<p>最后，我们再通过布局管理方法pack()将button1添加到画布上。</p>
+<div class="highlight"><pre><span></span><span class="n">button1</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">TOP</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+
+<p>运行程序，界面如下：</p>
+<p><img alt="增加了交互功能的Hello World" src="../images/20201013_helloworld3.png" style="border: 1px solid #000000;"></p>
+<p>当我们点击按钮时，显示内容变成：</p>
+<p><img alt="显示中文内容的Hello World" src="../images/20201013_helloworld3cn.png" style="border: 1px solid #000000;"></p>
+<p>点击“中文”按钮时，文本“Hello World！”会变成“世界，你好！”。可见，这个HelloWorld程序相比前面的例子增加了简单的交互功能，这个功能是通过将回调函数set_chinese与按钮button1的点击事件进行绑定实现的。</p>
+<h1>总结一下</h1>
+<p>本文介绍了编写Tkinter程序的几个基本步骤，大致是：</p>
+<ol>
+<li>创建并设置根窗口</li>
+<li>选择要显示的组件并进行对应设置</li>
+<li>组件的布局管理</li>
+<li>给组件编写交互功能</li>
+</ol>
+<p>同时，通过三个HelloWorld程序，分别对这些步骤进行了简单介绍。后续将会针对这些步骤，作进一步的详细介绍。</p></div>
         <hr />
     </div>
 		
+
+
+        
+
+ 
+
+    <div class='article'>
+        <a href="../cn/the-reason-we-should-learn-tkinter-for-gui-application.html"><h2>Python自带的GUI库Tkinter是否值得学习？</h2></a>
+        <div class= "well small"> ﻿2020-05-29
+
+by Vincent Ping 
+ 
+
+  | Category: <a href="../category/bian-cheng.html">编程</a> 
+
+ 
+   | Tags: <a href="../tag/python.html">Python</a> <a href="../tag/tkinter.html">Tkinter</a> <a href="../tag/gui.html">GUI</a>  </div>
+        <div class="summary"><p>Python语言可以用在很多方面，网站开发、数据分析、运营维护、游戏开发等等，那么桌面应用程序GUI呢？其实Python标准库里自带Tkinter就是干这个的。相比PyQT、wxPython等等，Tkinter有哪些优势和不足，是否值得学呢？</p> <a class="btn btn-info xsmall" href="../cn/the-reason-we-should-learn-tkinter-for-gui-application.html">read more</a></div>
+    </div>	
+				
 <div class="pagination">
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
