@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh_cn">
 <head>
     <meta charset="utf-8">
@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="Vincent Ping">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -35,11 +34,12 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="https://vincentping.com">Vincent Ping的网站</a>
+        <a class="brand" href="..">Vincent Ping的网站</a>
 
         <div class="nav-collapse">
         <ul class="nav">
             
+            <li><a href="../pages/contact.html">联系作者</a></li>
         </ul>
         </div>
         
@@ -60,19 +60,17 @@
     <div class='article'>
         <div class="content-title">
             <a href="../cn/tkinter-root-window-settings.html"><h1>Tkinter根窗口设置小技巧：程序启动最大化和程序窗口图标设置</h1></a>
-﻿2020-10-27
+2020-10-27
 
-by Vincent Ping 
+by <a class="url fn" href="../author/vincent-ping.html">Vincent Ping</a>
  
 
-  | Category: <a href="../category/bian-cheng.html">编程</a> 
 
  
-   | Tags: <a href="../tag/python.html">Python</a> <a href="../tag/tkinter.html">Tkinter</a> <a href="../tag/gui.html">GUI</a>  
         </div>
         
         <div><p>上文《<a href="https://vincentping.com/cn/the-four-steps-to-build-a-tkinter-application.html" target="_blank">Hello World，编写一个Tkinter程序需要哪些基本步骤？</a>》介绍了创建Tkinter应用的四个步骤，其中根窗口设置比较简单。在前面的例子中我们设置了窗口的title、窗口的尺寸和窗口是否能变化等，代码如下：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tkinter</span>
 
 <span class="n">root</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>     <span class="c1"># 设置画布窗口的title</span>
@@ -80,8 +78,7 @@ by Vincent Ping
 <span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>          <span class="c1"># 设置画布窗口是否能变化大小，这里设置X和Y轴都不可改变</span>
 
 <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>注意，在上面窗口尺寸设置geometry中"800x330"，中间是一个小写的“x”。如果要同时设置窗口在屏幕上的位置，可以使用"800x330+200+100"这样的参数，"800x330"后面的"+200+100"部分，分别表示窗口左上角与屏幕左侧和顶部的距离。如果设置成"-200-100"则表示窗口右下角与屏幕右侧和底部的距离。另外，resizable()可以使用1,0，也可以使用True, False作为参数。</p>
 <p>根窗口除了这些基本的设置，这里另外介绍两个常见功能的实现：</p>
@@ -89,26 +86,22 @@ by Vincent Ping
 <p>有时候，我们希望程序启动时能最大化窗口，那么在Tkinter程序中是怎么实现的呢？</p>
 <p>1、其实上面的root.geometry()，就是设置启动时窗口大小的，因此只要我们能获取窗口的尺寸，然后赋值给这个函数就可以了。</p>
 <p>可以使用root.maxsize()或者root.winfo_screenwidth()、root.winfo_screenheight()获取窗口尺寸。如下：</p>
-<div class="highlight"><pre><span></span><span class="n">the_width</span><span class="p">,</span> <span class="n">the_height</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">maxsize</span><span class="p">()</span> 
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">the_width</span><span class="p">,</span> <span class="n">the_height</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">maxsize</span><span class="p">()</span> 
+</code></pre></div>
 
 <p>或者</p>
-<div class="highlight"><pre><span></span><span class="n">the_width</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">winfo_screenwidth</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">the_width</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">winfo_screenwidth</span><span class="p">()</span>
 <span class="n">the_height</span> <span class="o">=</span> <span class="n">root</span><span class="o">.</span><span class="n">winfo_screenheight</span><span class="p">()</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>接下来，赋值给root.geometry()：</p>
-<div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">x</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">the_width</span><span class="p">,</span> <span class="n">the_height</span><span class="p">))</span> 
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">x</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span><span class="n">the_width</span><span class="p">,</span> <span class="n">the_height</span><span class="p">))</span> 
+</code></pre></div>
 
 <p>上面的方式在Windows、MacOS和Linux系统上都适合，平时也最常用。</p>
 <p>2、如果只需要在Windows系统下实现最大化窗口，可以调用root.state()函数，直接设置最大化窗口：</p>
-<div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="s2">&quot;zoomed&quot;</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="o">.</span><span class="n">state</span><span class="p">(</span><span class="s2">&quot;zoomed&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>这里的窗口状态函数state，可以有三个状态，分别是：</p>
 <ul>
@@ -118,31 +111,28 @@ by Vincent Ping
 </ul>
 <p>这种方式只在Windows系统上适用。</p>
 <p>3、另外，还可以使用root.attributes()设置窗口的全屏属性为真，来实现窗口最大化。如下：</p>
-<div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s2">&quot;-fullscreen&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="o">.</span><span class="n">attributes</span><span class="p">(</span><span class="s2">&quot;-fullscreen&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
 <p>这种方法在各种系统下都能适用，但是这种全屏方法会导致窗口的标题栏也没有了，实践中很少会用到。</p>
 <h1>程序窗口图标设置</h1>
 <p>缺省情况下，我们编写的Tkinter程序在Windows系统下运行时，程序窗口图标是Tkinter内置的羽毛图标，而下方任务栏上是Python的图标。见下图（此处运行的就是本文开头的例子）：</p>
 <p><img alt="系统确省图标" src="../images/20201027_default_ico.png" style="border: 1px solid #000000;"></p>
 <p>我们可以通过root.wm_iconbitmap()或者root.iconbitmap()函数来设置程序窗口图标。首先需要将对应的ico图标文件（我这里是vincent.ico文件）放在Tkinter程序目录下，然后在root.mainloop()前增加一句代码：</p>
-<div class="highlight"><pre><span></span><span class="n">root</span><span class="o">.</span><span class="n">wm_iconbitmap</span><span class="p">(</span><span class="s2">&quot;vincent.ico&quot;</span><span class="p">)</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">root</span><span class="o">.</span><span class="n">wm_iconbitmap</span><span class="p">(</span><span class="s2">&quot;vincent.ico&quot;</span><span class="p">)</span>
+</code></pre></div>
 
 <p>即可得到运行结果：</p>
 <p><img alt="程序窗口图标设置" src="../images/20201027_setting_ico.png" style="border: 1px solid #000000;"></p>
 <p>这样程序图标变为我们自己定义的ico文件，但是任务栏上的Python图标没有改变。可以通过添加如下代码设置：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ctypes</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">ctypes</span>
 
 <span class="n">myappid</span> <span class="o">=</span> <span class="s2">&quot;company.product.version&quot;</span> <span class="c1"># 这里可以设置任意文本</span>
 <span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">shell32</span><span class="o">.</span><span class="n">SetCurrentProcessExplicitAppUserModelID</span><span class="p">(</span><span class="n">myappid</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>最后的完整代码为：</p>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tkinter</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tkinter</span>
 <span class="kn">import</span> <span class="nn">ctypes</span>
 
 <span class="n">myappid</span> <span class="o">=</span> <span class="s2">&quot;company.product.version&quot;</span> <span class="c1"># 这里可以设置任意文本</span>
@@ -154,8 +144,7 @@ by Vincent Ping
 <span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>          <span class="c1"># 设置画布窗口是否能变化大小，这里设置X和Y轴都不可改变</span>
 <span class="n">root</span><span class="o">.</span><span class="n">wm_iconbitmap</span><span class="p">(</span><span class="s1">&#39;vincent.ico&#39;</span><span class="p">)</span>  <span class="c1"># 设置程序图标</span>
 <span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>运行结果如下：</p>
 <p><img alt="程序窗口图标设置完成" src="../images/20201027_setting_ico_final.png" style="border: 1px solid #000000;"></p></div>
@@ -163,42 +152,38 @@ by Vincent Ping
     </div>
 		
 
-
+ 
         
 
  
 
     <div class='article'>
         <a href="../cn/the-four-steps-to-build-a-tkinter-application.html"><h2>Hello World，编写一个Tkinter程序需要哪些基本步骤？</h2></a>
-        <div class= "well small"> ﻿2020-10-13
+        <div class= "well small"> 2020-10-13
 
-by Vincent Ping 
+by <a class="url fn" href="../author/vincent-ping.html">Vincent Ping</a>
  
 
-  | Category: <a href="../category/bian-cheng.html">编程</a> 
 
- 
-   | Tags: <a href="../tag/python.html">Python</a> <a href="../tag/tkinter.html">Tkinter</a> <a href="../tag/gui.html">GUI</a>  </div>
+ </div>
         <div class="summary"><p>通过Hello World程序介绍编写Tkinter程序的四个基本步骤：创建并设置根窗口、选择要显示的组件并进行对应设置、组件的布局管理和给组件编写交互功能。</p> <a class="btn btn-info xsmall" href="../cn/the-four-steps-to-build-a-tkinter-application.html">read more</a></div>
     </div>	
 				
 
-
+ 
         
 
  
 
     <div class='article'>
         <a href="../cn/the-reason-we-should-learn-tkinter-for-gui-application.html"><h2>Python自带的GUI库Tkinter是否值得学习？</h2></a>
-        <div class= "well small"> ﻿2020-05-29
+        <div class= "well small"> 2020-05-29
 
-by Vincent Ping 
+by <a class="url fn" href="../author/vincent-ping.html">Vincent Ping</a>
  
 
-  | Category: <a href="../category/bian-cheng.html">编程</a> 
 
- 
-   | Tags: <a href="../tag/python.html">Python</a> <a href="../tag/tkinter.html">Tkinter</a> <a href="../tag/gui.html">GUI</a>  </div>
+ </div>
         <div class="summary"><p>Python语言可以用在很多方面，网站开发、数据分析、运营维护、游戏开发等等，那么桌面应用程序GUI呢？其实Python标准库里自带Tkinter就是干这个的。相比PyQT、wxPython等等，Tkinter有哪些优势和不足，是否值得学呢？</p> <a class="btn btn-info xsmall" href="../cn/the-reason-we-should-learn-tkinter-for-gui-application.html">read more</a></div>
     </div>	
 				
@@ -212,8 +197,8 @@ by Vincent Ping
 
 </ul>
 </div>
-
-
+ 
+  
         </div>
         
         <div class="span3">
@@ -248,16 +233,6 @@ by Vincent Ping
             </ul>
             </div>
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Pages
-                </li>
-                
-                <li><a href="../pages/contact.html">联系作者</a></li>
-               
-            </ul>
-            </div>
 
 
 
@@ -266,24 +241,12 @@ by Vincent Ping
     </div>     </div> 
 <footer>
 <br />
-<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
-<img rel="license" alt="Creative Commons License" src="/images/cc_88_31.png" /></p>
-<p>&copy; 2020 Vincent Ping的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
-<p>&nbsp;</p>
+<p><a href="..">Vincent Ping的网站</a> &copy; Vincent Ping 2020</p>
 </footer>
 
 </div> <!-- /container -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="../theme/bootstrap-collapse.js"></script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?22fbfc99d5941f1f42e28770ab3481b6";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
  
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh_cn">
 <head>
     <meta charset="utf-8">
@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="Vincent Ping">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -35,11 +34,12 @@
              <span class="icon-bar"></span>
          </a>
 
-        <a class="brand" href="https://vincentping.com">Vincent Ping的网站</a>
+        <a class="brand" href="..">Vincent Ping的网站</a>
 
         <div class="nav-collapse">
         <ul class="nav">
             
+            <li><a href="../pages/contact.html">联系作者</a></li>
         </ul>
         </div>
         
@@ -55,15 +55,13 @@
     <div class='article'>
         <div class="content-title">
             <h1>robots.txt和Robots META标签</h1>
-﻿2003-10-18
+2003-10-18
 
-by Vincent Ping 
+by <a class="url fn" href="../author/vincent-ping.html">Vincent Ping</a>
  
 
-  | Category: <a href="../category/ying-xiao.html">营销</a> 
 
- 
-   | Tags: <a href="../tag/rss.html">RSS</a>         </div>
+        </div>
 	
         <div><blockquote>
 <p style="background-color: #ccffcc;">本文写于2003年10月，此处保留原文，仅供参考。</p>
@@ -211,9 +209,8 @@ by Vincent Ping
 <li>
 <p>行前有大量空格</p>
 <p>例如写成</p>
-<div class="highlight"><pre><span></span><span class="err">    `Disallow: /cgi-bin/`</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>    `Disallow: /cgi-bin/`
+</code></pre></div>
 
 <p>尽管在标准没有谈到这个，但是这种方式很容易出问题。</p>
 </li>
@@ -251,21 +248,20 @@ by Vincent Ping
 <h1>二、Robots META标签</h1>
 <h2>1、什么是Robots META标签</h2>
 <p>Robots.txt文件主要是限制整个站点或者目录的搜索引擎访问情况，而Robots META标签则主要是针对一个个具体的页面。和其他的META标签（如使用的语言、页面的描述、关键词等）一 样，Robots META标签也是放在页面的中，专门用来告诉搜索引擎ROBOTS如何抓取该页的内容。具体的形式类似（见黑体部分）：</p>
-<div class="highlight"><pre><span></span><span class="nt">&lt;html&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;html&gt;</span>
 <span class="nt">&lt;head&gt;</span>
 <span class="nt">&lt;title&gt;</span>时代营销--网络营销专业门户<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;Robots&quot;</span> <span class="na">content=</span><span class="s">&quot;index,follow&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span> <span class="na">CONTENT=</span><span class="s">&quot;text/html; charset=gb2312&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;keywords&quot;</span> <span class="na">content=</span><span class="s">&quot;营销,...&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">&quot;description&quot;</span> <span class="na">content=</span><span class="s">&quot;时代营销网是.....&quot;</span><span class="nt">&gt;</span>
-<span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;/public/css.css&quot;</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Robots&quot;</span><span class="w"> </span><span class="na">content=</span><span class="s">&quot;index,follow&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span><span class="w"> </span><span class="na">http-equiv=</span><span class="s">&quot;Content-Type&quot;</span><span class="w"> </span><span class="na">CONTENT=</span><span class="s">&quot;text/html; charset=gb2312&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;keywords&quot;</span><span class="w"> </span><span class="na">content=</span><span class="s">&quot;营销,...&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;meta</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;description&quot;</span><span class="w"> </span><span class="na">content=</span><span class="s">&quot;时代营销网是.....&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;link</span><span class="w"> </span><span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="w"> </span><span class="na">href=</span><span class="s">&quot;/public/css.css&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;text/css&quot;</span><span class="nt">&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 …
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <h1>2、Robots META标签的写法：</h1>
 <p>Robots META标签中没有大小写之分，name=”Robots”表示所有的搜索引擎，可以针对某个具体搜索引擎写为name=”BaiduSpider”。co
@@ -338,16 +334,6 @@ ntent部分有四个指令选项：index、noindex、 follow、nofollow，指令
             </ul>
             </div>
 
-            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
-            <ul class="nav nav-list">
-                <li class="nav-header"> 
-                Pages
-                </li>
-                
-                <li><a href="../pages/contact.html">联系作者</a></li>
-               
-            </ul>
-            </div>
 
 
 
@@ -356,24 +342,12 @@ ntent部分有四个指令选项：index、noindex、 follow、nofollow，指令
     </div>     </div> 
 <footer>
 <br />
-<p>本站内容采用<a rel="license" target="_new" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享署名-非商业性使用-相同方式共享 4.0 许可协议</a>。
-<img rel="license" alt="Creative Commons License" src="/images/cc_88_31.png" /></p>
-<p>&copy; 2020 Vincent Ping的网站 | Static HTML generated by <a href="http://www.getpelican.com" target="_new">Pelican</a></p>
-<p>&nbsp;</p>
+<p><a href="..">Vincent Ping的网站</a> &copy; Vincent Ping 2020</p>
 </footer>
 
 </div> <!-- /container -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="../theme/bootstrap-collapse.js"></script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?22fbfc99d5941f1f42e28770ab3481b6";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
  
 </body>
 </html>
